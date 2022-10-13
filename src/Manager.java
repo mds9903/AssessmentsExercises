@@ -2,17 +2,18 @@ import javax.lang.model.element.Name;
 import java.util.HashMap;
 
 public class Manager {
-    private static HashMap<Integer, Manager> managers;
-    private static int count;
+    private static int count = 1;
     private String name;
     private String branch;
-    private int id;
+    private final int id;
 
-    Manager(String name, String branch){
+    private HashMap<Integer, Reportee> reportees;
+
+
+    Manager(String name, String branch) {
         this.name = name;
         this.branch = branch;
         this.id = Manager.count++;
-        Manager.managers.put(this.id, this); // update than map of existing managers
     }
 
     public String getName() {
@@ -44,7 +45,5 @@ public class Manager {
                 '}';
     }
 
-    public static Manager getManagerById(int id){
-        return Manager.managers.getOrDefault(id, null);
-    }
+
 }
