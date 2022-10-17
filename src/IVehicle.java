@@ -3,7 +3,8 @@ public interface IVehicle {
     public boolean keyIgnition();
     public boolean applyBrakes();
     public void repair();
-    public default void displaySpecs(){
+    public default void
+    displaySpecs(){
         System.out.println("Displaying details of this vehicle");
         System.out.println("Default details of specifications");
     }

@@ -9,7 +9,7 @@ public class User {
     User(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.id = firstName.substring(0, 3) + (++count);
+        this.id = firstName.concat(lastName).substring(0, 3) + (++count);
     }
 
     public String getFirstName() {
@@ -38,9 +38,9 @@ public class User {
     @Override
     public String toString() {
         return "User{" +
-                "firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", id='" + id + '\'' +
+                "firstName='" + firstName +
+                ", lastName='" + lastName +
+                ", id='" + id +
                 '}';
     }
 }

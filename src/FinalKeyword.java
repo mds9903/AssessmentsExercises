@@ -10,6 +10,6 @@ public class FinalKeyword {
         // even if the id was made public
         // let's change the access for id to public in class User
         // and try to change the value of id for obj user
-        user.id = "hello123"; // this will cause again a compile time error in FinalKeyword.java since id is a final instance variable of user
+//        user.id = "hello123"; // this will cause again a compile time error in FinalKeyword.java since id is a final instance variable of user
     }
 }
