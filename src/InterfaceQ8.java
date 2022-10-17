@@ -1,13 +1,13 @@
 // "Provide couple of interfaces.
 // Let them define the concrete implementations of all interfaces on single class"
 // demo multiple interface implementation
-public class Interfaces implements IVehicle, IMachine, ITransportMedium{
+public class InterfaceQ8 implements IVehicle, IMachine, ITransportMedium{
     private boolean running;
     private double fare;
     private String route;
     // assumption: this class represents an Aeroplane
     public static void main(String[] args) {
-        Interfaces aeroplane = new Interfaces();
+        InterfaceQ8 aeroplane = new InterfaceQ8();
         aeroplane.keyIgnition();
         System.out.println(aeroplane.isRunning());
         aeroplane.repair();
