@@ -1,7 +1,16 @@
 public class User {
-    // a class to create pojo from json file containing content about a user
     private String firstName;
     private String lastName;
+
+    public final String id;
+
+    private static int count = 0;
+
+    User(String firstName, String lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.id = firstName.substring(0, 3) + (++count);
+    }
 
     public String getFirstName() {
         return firstName;
@@ -19,11 +28,19 @@ public class User {
         this.lastName = lastName;
     }
 
+    public String getId() {
+        return id;
+    }
+//    public void setId(String newId) {
+//        this.id = newId;
+//    }
+
     @Override
     public String toString() {
         return "User{" +
                 "firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
+                ", id='" + id + '\'' +
                 '}';
     }
 }
