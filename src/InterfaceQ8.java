@@ -1,10 +1,11 @@
 // "Provide couple of interfaces.
 // Let them define the concrete implementations of all interfaces on single class"
 // demo multiple interface implementation
-public class InterfaceQ8 implements IVehicle, IMachine, ITransportMedium{
+public class InterfaceQ8 implements IVehicle, IMachine, ITransportMedium {
     private boolean running;
     private double fare;
     private String route;
+
     // assumption: this class represents an Aeroplane
     public static void main(String[] args) {
         InterfaceQ8 aeroplane = new InterfaceQ8();
@@ -51,8 +52,14 @@ public class InterfaceQ8 implements IVehicle, IMachine, ITransportMedium{
     }
 
     @Override
-    public void keyIgnition() {
+    public boolean keyIgnition() {
+        if (this.running) {
+            System.out.println("Aeroplane is already running. No need for key ignition.");
+            return false;
+        }
         System.out.println("Pilot in cockpit... Ignition.. Flight is about to take off");
+        running = true;
+        return true;
     }
 
     @Override
@@ -62,6 +69,7 @@ public class InterfaceQ8 implements IVehicle, IMachine, ITransportMedium{
         System.out.println("Brakes applied... Aeroplane stopped");
         return this.running;
     }
+
     @Override
     public void repair() {
         System.out.println("This flight is being sent for repair.");

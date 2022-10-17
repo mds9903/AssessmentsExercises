@@ -1,2 +1,3 @@
-package PACKAGE_NAME;public class GetOrderInfoUserExit {
+abstract class GetOrderInfoUserExit {
+    abstract void getOrderInfo();
 }
