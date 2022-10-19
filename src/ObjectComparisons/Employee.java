@@ -94,17 +94,15 @@ public class Employee {
 
     @Override
     public String toString() {
-        return " {" +
-                " | " + firstname  +
-                " | " + lastname  +
-                " | " + dateofjoining +
-                " | " + experience +
-                " | " + dateOfbirth +
-                " | " + department  +
-                " | " + managername  +
-                " | " + designation  +
-                "} ";
+        return "\n------------------------" +
+                "\n\tfirstname=" + firstname +
+                "\n\tlastname=" + lastname +
+                "\n\tdateofjoining=" + dateofjoining +
+                "\n\texperience=" + experience +
+                "\n\tdateOfbirth=" + dateOfbirth +
+                "\n\tdepartment=" + department +
+                "\n\tmanagername=" + managername +
+                "\n\tdesignation=" + designation +
+                "\n------------------------\n";
     }
-
-
 }

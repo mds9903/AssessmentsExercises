@@ -17,6 +17,7 @@ import static java.util.stream.Collectors.groupingBy;
 // 3. What is required to ensure the uniqueness of the objects?
 // 4. Build map from list"
 public class StreamsCollections {
+    static String dateFormat = "d/MM/yyyy";
     static Scanner sc = new Scanner(System.in);
 
     public static void main(String[] args) {
@@ -34,7 +35,43 @@ public class StreamsCollections {
             }"
         */
         List<Employee> empList = new ArrayList<Employee>(); // collection of employees to work with
-        populateList(empList); // populate the list of employees either by user input or hard code
+        empList.add(
+                new Employee(
+                        "Tom", "Lee",
+                        getDateIn("12/12/2022", dateFormat),
+                        2,
+                        getDateIn("03/03/1999", dateFormat),
+                        "Client",
+                        "Robert William",
+                        "SE"));
+        empList.add(
+                new Employee(
+                        "Raj", "Kumar",
+                        getDateIn("12/12/2021", dateFormat),
+                        1,
+                        getDateIn("03/03/1997", dateFormat),
+                        "Product",
+                        "Robert William",
+                        "Sr SE"));
+        empList.add(
+                new Employee(
+                        "Will", "Dorrington",
+                        getDateIn("01/11/2020", dateFormat),
+                        3,
+                        getDateIn("03/03/1993", dateFormat),
+                        "Product",
+                        "Robert William",
+                        "Lead SE"));
+        empList.add(
+                new Employee(
+                        "David", "Broker",
+                        getDateIn("12/11/2021", dateFormat),
+                        2,
+                        getDateIn("03/03/1993", dateFormat),
+                        "Client",
+                        "Pawan Singhal",
+                        "Jr SE"));
+//        populateList(empList); // populate the list of employees either by user input or hard code
 
         // sample operations:-
         // sort by last name
@@ -49,28 +86,37 @@ public class StreamsCollections {
         System.out.println("sorted by last name:\n" + empList);*/
 
         // method 2: using streams
-        System.out.println(sortByLastName(empList));
+        System.out.println("sort by names\n" + sortByLastName(empList));
+        System.out.println();
 
         // sort by date of joining
-        System.out.println(sortByDOJ(empList));
+        System.out.println("sort by doj\n" + sortByDOJ(empList));
+        System.out.println();
 
         // employees with more than 2 years of exp
-        System.out.println(filterByExp(empList, 2));
+        System.out.println("filter by 2 years exp\n" + filterByExp(empList, 2));
+        System.out.println();
 
         // employees with a specific designation
-        System.out.println(filterByDesignation(empList, "IT"));
+        System.out.println("employees in IT designation\n" + filterByDesignation(empList, "IT"));
+        System.out.println();
 
         // group employees by manager name
-        System.out.println(filterByMngrName(empList, "Sunil"));
+        System.out.println("emp grouped by managers\n" + filterByMngrName(empList, "Sunil"));
+        System.out.println();
 
         // group by year of birth
-        System.out.println(groupByDOB(empList));
+        System.out.println("group by dob\n" + groupByDOB(empList));
+        System.out.println();
 
         // group by year of joining
-        System.out.println(groupByDOJ(empList));
+        System.out.println("sort by doj\n" + groupByDOJ(empList));
+        System.out.println();
 
         // make of set of manager names
-        System.out.println(getManagersSet(empList));
+        System.out.println("All managers\n" + getManagersSet(empList));
+        System.out.println();
+
     }
 
     private static Set<String> getManagersSet(List<Employee> empList) {
@@ -81,14 +127,14 @@ public class StreamsCollections {
     }
 
     private static Map<LocalDate, List<Employee>> groupByDOJ(List<Employee> empList) {
-        Map<LocalDate,List<Employee>> empGroupedByDOJ = empList.stream()
+        Map<LocalDate, List<Employee>> empGroupedByDOJ = empList.stream()
                 .sorted((e1, e2) -> e1.getDateofjoining().compareTo(e2.getDateofjoining()))
                 .collect(groupingBy(Employee::getDateofjoining));
         return empGroupedByDOJ;
     }
 
     private static Map<LocalDate, List<Employee>> groupByDOB(List<Employee> empList) {
-        Map<LocalDate,List<Employee>> empGroupedByDOB = empList.stream()
+        Map<LocalDate, List<Employee>> empGroupedByDOB = empList.stream()
                 .sorted((e1, e2) -> e1.getDateOfbirth().compareTo(e2.getDateOfbirth()))
                 .collect(groupingBy(Employee::getDateOfbirth));
         return empGroupedByDOB;
@@ -110,7 +156,7 @@ public class StreamsCollections {
 
     private static List<Employee> filterByExp(List<Employee> empList, int exp) {
         List<Employee> filtered = empList.stream()
-                .filter(employee -> employee.getExperience() > exp)
+                .filter(employee -> employee.getExperience() == exp)
                 .collect(Collectors.toList());
         return filtered;
     }
@@ -124,13 +170,13 @@ public class StreamsCollections {
 
     private static List<Employee> sortByLastName(List<Employee> empList) {
         List<Employee> empByLastName = empList.stream()
-                                            .sorted((e1, e2) -> e1.getLastname().compareTo(e2.getLastname()))
-                                            .collect(Collectors.toList());
+                .sorted((e1, e2) -> e1.getLastname().compareTo(e2.getLastname()))
+                .collect(Collectors.toList());
         return empByLastName;
     }
 
     private static void populateList(List<Employee> empList) {
-        String dateFormat = "dd/MM/YYYY";
+
         // populate the given list
         System.out.println("Enter the number of employees you want to add");
         int n = sc.nextInt();
