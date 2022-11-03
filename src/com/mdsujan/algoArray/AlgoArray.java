@@ -1,3 +1,5 @@
+package com.mdsujan.algoArray;
+
 import java.util.Scanner;
 
 // assessment qn# 18:

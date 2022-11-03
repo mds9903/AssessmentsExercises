@@ -1,3 +1,5 @@
+package com.mdsujan.dateFormatting;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Scanner;
@@ -25,7 +27,7 @@ public class DateFormatting {
                 option = Integer.parseInt(ch); // we convert the string into an option number
             }catch (NumberFormatException numEx){
                 System.out.println(numEx);
-                return; // end the program
+                return; // end this program
             }
             if (option > 0 && option < 4) {
                 // get the index based on option; index = option - 1

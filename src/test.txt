@@ -1,0 +1,3 @@
+Hello world
+My name is sujan
+this txt file has 12 words.
